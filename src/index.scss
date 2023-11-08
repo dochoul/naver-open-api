@@ -13,11 +13,17 @@
         display: block;
         border-radius: 10px;
         margin: 20px 0;
+        width: 100%;
       }
       .book-title {
         font-size: 24px;
         margin-bottom: 5px;
         line-height: 1.2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
     }
   }
@@ -26,6 +32,7 @@
 @media only screen and (min-width: 768px) {
   .App {
     .container {
+      width: 90%;
       gap: 15px;
       grid-template-columns: repeat(2, 1fr);
     }
@@ -34,9 +41,9 @@
 @media only screen and (min-width: 1024px) {
   .App {
     .container {
-      width: 80%;
+      width: 85%;
       gap: 20px;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

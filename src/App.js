@@ -56,12 +56,7 @@ function App() {
               rel="noreferer noreferrer"
             >
               <h2 className="book-title">{book.title}</h2>
-              <img
-                className="thumbnail"
-                src={book.image}
-                alt=""
-                style={{ width: "100%" }}
-              />
+              <img className="thumbnail" src={book.image} alt="" />
               <p>{book.author}</p>
               <p>{book.publisher}</p>
               <p>{book.description}</p>
