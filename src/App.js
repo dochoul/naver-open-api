@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -24,7 +24,7 @@ function App() {
 
   async function fetchBooks() {
     const response = await axios.get(
-      "/v1/search/book.json?query=주식&display=5&start=1",
+      "/v1/search/book.json?query=주식&display=50&start=1",
       {
         headers: {
           "X-Naver-Client-Id": "ky8lLbnB0L4E8EH2gm73",
@@ -43,18 +43,25 @@ function App() {
   }, []);
 
   return (
+    /* grid-template-columns: repeat(3, 1fr) */
+
     <div className="App">
-      <div>
+      <div className="container">
         {books.map((book) => (
-          <div key={book.isbn}>
-            <h2>{book.title}</h2>
+          <div className="box" key={book.isbn}>
             <a
               href={book.link}
               target="_blank"
               title="새창"
               rel="noreferer noreferrer"
             >
-              <img src={book.image} alt="" />
+              <h2 className="book-title">{book.title}</h2>
+              <img
+                className="thumbnail"
+                src={book.image}
+                alt=""
+                style={{ width: "100%" }}
+              />
               <p>{book.author}</p>
               <p>{book.publisher}</p>
               <p>{book.description}</p>

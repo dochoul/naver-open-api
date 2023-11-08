@@ -1,0 +1,42 @@
+.App {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    width: 95%;
+    margin: 5% auto;
+    .box {
+      padding: 30px;
+      background: #efefef;
+      border: 1px solid #ccc;
+      .thumbnail {
+        display: block;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      .book-title {
+        font-size: 24px;
+        margin-bottom: 5px;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .App {
+    .container {
+      gap: 15px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .App {
+    .container {
+      width: 80%;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
