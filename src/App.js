@@ -38,6 +38,7 @@ function App() {
 
   useEffect(() => {
     fetchBooks();
+    document.title = "NAVER 책";
     // fetchData();
     // createData();
   }, []);
