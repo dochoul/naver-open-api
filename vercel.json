@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/https://openapi.naver.com"
+    },
+    {
+      "source": "/v1/",
+      "destination": "https://openapi.naver.com"
+    }
+  ]
+}
