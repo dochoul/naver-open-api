@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/v1/search/book.json?query=주식&display=50&start=1",
+      "source": "/v1/search/",
       "destination": "https://openapi.naver.com"
     }
   ]
