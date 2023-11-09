@@ -26,13 +26,14 @@ function changeDateString(date) {
 }
 
 function App() {
+  const [start, setStart] = useState(1);
   const [books, setBooks] = useState([]);
 
-  async function fetchBooks() {
+  async function fetchBooks(s = 100) {
     const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
 
     const response = await axios.get(
-      `${PROXY}/v1/search/book.json?query=주식&display=50&start=1`,
+      `${PROXY}/v1/search/book.json?query=주식&display=50&start=${s}`,
       {
         headers: {
           "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
@@ -40,11 +41,19 @@ function App() {
         },
       }
     );
+    console.log(11111);
     setBooks(response.data.items);
     console.log(response.data);
   }
 
   useEffect(() => {
+    window.addEventListener("scroll", function () {
+      var isScrollAtBottom =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
+      if (isScrollAtBottom) {
+        console.log("bottom");
+      }
+    });
     fetchBooks();
     document.title = "NAVER 책";
   }, []);
