@@ -2,6 +2,29 @@ import "./index.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+function insertCommas(n) {
+  // get stuff before the dot
+  let s1 = n.toString();
+  var d = s1.indexOf(".");
+  var s2 = d === -1 ? s1 : s1.slice(0, d);
+
+  // insert commas every 3 digits from the right
+  for (var i = s2.length - 3; i > 0; i -= 3)
+    s2 = s2.slice(0, i) + "," + s2.slice(i);
+
+  // append fractional part
+  if (d !== -1) s2 += s1.slice(d);
+
+  return s2;
+}
+
+function changeDateString(date) {
+  var year = date.substr(0, 4);
+  var month = date.substr(4, 2);
+  var day = date.substr(6, 2);
+  return year + "." + month + "." + day;
+}
+
 function App() {
   const [books, setBooks] = useState([]);
 
@@ -52,10 +75,10 @@ function App() {
                     <span>책 소개:</span> {book.description}
                   </p>
                   <p className="pubdate">
-                    <span>발행:</span> {book.pubdate}
+                    <span>발행:</span> {changeDateString(book.pubdate)}
                   </p>
                   <p className="discount">
-                    <span>최저:</span> {book.discount}
+                    <span>최저:</span> {insertCommas(book.discount)}원
                   </p>
                 </div>
               </a>
