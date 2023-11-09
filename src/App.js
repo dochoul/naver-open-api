@@ -48,24 +48,25 @@ function App() {
 
     <div className="App">
       <div className="container">
-        {books.map((book) => (
-          <div className="box" key={book.isbn}>
-            <a
-              href={book.link}
-              target="_blank"
-              title="새창"
-              rel="noreferer noreferrer"
-            >
-              <h2 className="book-title">{book.title}</h2>
-              <img className="thumbnail" src={book.image} alt="" />
-              <p>{book.author}</p>
-              <p>{book.publisher}</p>
-              <p>{book.description}</p>
-              <p>{book.pubdate}</p>
-              <p>{book.discount}</p>
-            </a>
-          </div>
-        ))}
+        {books &&
+          books.map((book) => (
+            <div className="box" key={book.isbn}>
+              <a
+                href={book.link}
+                target="_blank"
+                title="새창"
+                rel="noreferer noreferrer"
+              >
+                <h2 className="book-title">{book.title}</h2>
+                <img className="thumbnail" src={book.image} alt="" />
+                <p>{book.author}</p>
+                <p>{book.publisher}</p>
+                <p>{book.description}</p>
+                <p>{book.pubdate}</p>
+                <p>{book.discount}</p>
+              </a>
+            </div>
+          ))}
       </div>
     </div>
   );
