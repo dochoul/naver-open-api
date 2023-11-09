@@ -1,12 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/src/:path*",
+      "source": "/openapi/:path",
       "destination": "https://openapi.naver.com"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/https://openapi.naver.com"
     }
   ]
 }
