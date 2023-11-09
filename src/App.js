@@ -27,8 +27,6 @@ function App() {
   }, []);
 
   return (
-    /* grid-template-columns: repeat(3, 1fr) */
-
     <div className="App">
       <div className="container">
         {books &&
