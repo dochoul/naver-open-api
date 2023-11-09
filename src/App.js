@@ -3,24 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  const [data, setData] = useState([]);
   const [books, setBooks] = useState([]);
-
-  async function fetchData() {
-    const response = await axios.get(
-      "https://85c3ac80-6126-4378-bfb0-43dbff5aa142.mock.pstmn.io/list"
-    );
-    setData(response);
-    //console.log(response);
-  }
-
-  async function createData() {
-    const response = await axios.post(
-      "https://85c3ac80-6126-4378-bfb0-43dbff5aa142.mock.pstmn.io/list",
-      { name: "아이언맨", age: 100, male: "M" }
-    );
-    console.log(response);
-  }
 
   async function fetchBooks() {
     const response = await axios.get(
@@ -39,8 +22,6 @@ function App() {
   useEffect(() => {
     fetchBooks();
     document.title = "NAVER 책";
-    // fetchData();
-    // createData();
   }, []);
 
   return (
