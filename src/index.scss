@@ -7,23 +7,50 @@
     margin: 5% auto;
     .box {
       padding: 30px;
-      background: #efefef;
-      border: 1px solid #ccc;
-      .thumbnail {
-        display: block;
-        border-radius: 10px;
-        margin: 20px 0;
-        width: 100%;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
+      transition: all 0.2s ease-in-out;
+      .link {
+        text-decoration: none;
+        .thumbnail {
+          display: block;
+          margin: 20px auto;
+          max-width: 148px;
+          max-height: 236px;
+          object-fit: cover;
+        }
+        .book-title {
+          font-size: 20px;
+          margin-bottom: 5px;
+          line-height: 1.2;
+          font-weight: 900;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+        }
+        .book-info {
+          font-size: 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          span {
+            color: #888;
+          }
+          .description {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+          }
+        }
       }
-      .book-title {
-        font-size: 24px;
-        margin-bottom: 5px;
-        line-height: 1.2;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 4px 12px 20px 6px rgba(0, 0, 0, 0.18);
       }
     }
   }
@@ -32,18 +59,18 @@
 @media only screen and (min-width: 768px) {
   .App {
     .container {
-      width: 90%;
       gap: 15px;
       grid-template-columns: repeat(2, 1fr);
     }
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .App {
     .container {
-      width: 85%;
+      width: 90%;
       gap: 20px;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
     }
   }
 }

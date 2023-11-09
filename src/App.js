@@ -34,17 +34,30 @@ function App() {
             <div className="box" key={book.isbn}>
               <a
                 href={book.link}
+                className="link"
                 target="_blank"
                 title="새창"
                 rel="noreferer noreferrer"
               >
                 <h2 className="book-title">{book.title}</h2>
                 <img className="thumbnail" src={book.image} alt="" />
-                <p>{book.author}</p>
-                <p>{book.publisher}</p>
-                <p>{book.description}</p>
-                <p>{book.pubdate}</p>
-                <p>{book.discount}</p>
+                <div className="book-info">
+                  <p className="author">
+                    <span>저자:</span> {book.author}
+                  </p>
+                  <p className="publisher">
+                    <span>출판:</span> {book.publisher}
+                  </p>
+                  <p className="description">
+                    <span>책 소개:</span> {book.description}
+                  </p>
+                  <p className="pubdate">
+                    <span>발행:</span> {book.pubdate}
+                  </p>
+                  <p className="discount">
+                    <span>최저:</span> {book.discount}
+                  </p>
+                </div>
               </a>
             </div>
           ))}
