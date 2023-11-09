@@ -38,6 +38,7 @@
   },
   "proxy": "https://openapi.naver.com",
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "sass": "^1.69.5"
   }
 }

@@ -27,8 +27,8 @@ function App() {
       "/v1/search/book.json?query=주식&display=50&start=1",
       {
         headers: {
-          "X-Naver-Client-Id": "ky8lLbnB0L4E8EH2gm73",
-          "X-Naver-Client-Secret": "F6ZVyV2Qiz",
+          "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
         },
       }
     );
