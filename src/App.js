@@ -6,8 +6,10 @@ function App() {
   const [books, setBooks] = useState([]);
 
   async function fetchBooks() {
+    const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
+
     const response = await axios.get(
-      "/v1/search/book.json?query=주식&display=50&start=1",
+      `${PROXY}/v1/search/book.json?query=주식&display=50&start=1`,
       {
         headers: {
           "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
