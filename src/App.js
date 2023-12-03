@@ -31,7 +31,6 @@ function App() {
 
   async function fetchBooks(s = 100) {
     const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
-
     const response = await axios.get(
       `${PROXY}/v1/search/book.json?query=주식&display=50&start=${s}`,
       {
@@ -41,9 +40,7 @@ function App() {
         },
       }
     );
-    console.log(11111);
     setBooks(response.data.items);
-    console.log(response.data);
   }
 
   useEffect(() => {
