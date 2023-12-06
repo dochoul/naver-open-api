@@ -30,11 +30,11 @@ function App() {
   const [keyword, setKeyword] = useState("");
   const [books, setBooks] = useState([]);
 
-  async function fetchBooks(keyword = "주식", s = 1) {
+  async function fetchBooks(keyword, s = 1, display = 20) {
     const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
     try {
       const response = await axios.get(
-        `${PROXY}/v1/search/book.json?query=${keyword}&display=50&start=${s}`,
+        `${PROXY}/v1/search/book.json?query=${keyword}&display=${display}&start=${s}`,
         {
           headers: {
             "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
@@ -59,16 +59,32 @@ function App() {
   };
 
   useEffect(() => {
+    // 스크롤 이벤트 리스너 등록
     window.addEventListener("scroll", function () {
-      var isScrollAtBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight;
-      if (isScrollAtBottom) {
-        console.log("bottom");
+      // 현재 스크롤 위치
+      var scrollPosition =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
+
+      // 전체 문서의 높이
+      var documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+
+      // 스크롤이 가장 하단으로 이동했을 때
+      if (scrollPosition + window.innerHeight >= documentHeight) {
+        // API 호출 함수 호출
+        fetchBooks(!keyword && "주식", 1, 40);
       }
     });
-    fetchBooks();
+    fetchBooks("주식");
     document.title = "NAVER 책";
-  }, []);
+  }, [keyword]);
 
   return (
     <div className="App">
