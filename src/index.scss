@@ -1,10 +1,42 @@
 .App {
+  .search_wrap {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 10% auto 5%;
+    width: 95%;
+    .emoji {
+      display: none;
+      line-height: 1;
+    }
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #00c772;
+      border-radius: 6px;
+      height: 30px;
+      font-size: 20px;
+      transition: border-color 0.15s ease-in;
+    }
+    .search_button {
+      position: absolute;
+      right: 5px;
+      top: 2px;
+      cursor: pointer;
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
   .container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
     width: 95%;
-    margin: 5% auto;
+    margin: 0 auto 3%;
     .box {
       padding: 30px;
       background: #fff;
@@ -58,6 +90,13 @@
 
 @media only screen and (min-width: 768px) {
   .App {
+    .search_wrap {
+      margin: 6% auto 3%;
+      .emoji {
+        display: block;
+        font-size: 22px;
+      }
+    }
     .container {
       gap: 15px;
       grid-template-columns: repeat(2, 1fr);
@@ -67,6 +106,13 @@
 
 @media only screen and (min-width: 1024px) {
   .App {
+    .search_wrap {
+      margin: 4% auto 2%;
+      width: 50%;
+      .emoji {
+        font-size: 30px;
+      }
+    }
     .container {
       width: 90%;
       gap: 20px;

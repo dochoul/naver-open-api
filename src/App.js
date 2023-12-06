@@ -26,22 +26,37 @@ function changeDateString(date) {
 }
 
 function App() {
-  const [start, setStart] = useState(1);
+  //const [start, setStart] = useState(1);
+  const [keyword, setKeyword] = useState("");
   const [books, setBooks] = useState([]);
 
-  async function fetchBooks(s = 100) {
+  async function fetchBooks(keyword = "주식", s = 1) {
     const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
-    const response = await axios.get(
-      `${PROXY}/v1/search/book.json?query=주식&display=50&start=${s}`,
-      {
-        headers: {
-          "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-          "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
-        },
-      }
-    );
-    setBooks(response.data.items);
+    try {
+      const response = await axios.get(
+        `${PROXY}/v1/search/book.json?query=${keyword}&display=50&start=${s}`,
+        {
+          headers: {
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+          },
+        }
+      );
+      setBooks(response.data.items);
+    } catch (err) {
+      console.log(err);
+    }
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchBooks(keyword);
+    setKeyword("");
+  };
+
+  const handleSerchKeyword = (e) => {
+    setKeyword(e.target.value);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", function () {
@@ -57,6 +72,20 @@ function App() {
 
   return (
     <div className="App">
+      <form onSubmit={handleSubmit} className="search_wrap">
+        <div className="emoji">📗</div>
+        <input
+          value={keyword}
+          onChange={handleSerchKeyword}
+          placeholder="한 시간 정도 독서하면 어떤 고통도 진정된다."
+        />
+        <button type="button" className="search_button">
+          <img
+            src="https://www.semie.cooking/assets/images/common/ic_search.png"
+            alt=""
+          />
+        </button>
+      </form>
       <div className="container">
         {books &&
           books.map((book) => (
