@@ -29,8 +29,10 @@ function App() {
   //const [start, setStart] = useState(1);
   const [keyword, setKeyword] = useState("");
   const [books, setBooks] = useState([]);
+  const [display, setDisplay] = useState(20);
 
-  async function fetchBooks(keyword, s = 1, display = 20) {
+  async function fetchBooks(keyword, s = 1, display) {
+    console.log(display);
     const PROXY = window.location.hostname === "localhost" ? "" : "/proxy";
     try {
       const response = await axios.get(
@@ -59,35 +61,70 @@ function App() {
   };
 
   useEffect(() => {
-    // 스크롤 이벤트 리스너 등록
-    window.addEventListener("scroll", function () {
-      // 현재 스크롤 위치
-      var scrollPosition =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop;
+    const handleScroll = () => {
+      //* 현재 스크롤 위치
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
 
-      // 전체 문서의 높이
-      var documentHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.clientHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      );
+      //* 전체 문서의 높이
+      const documentHeight = document.documentElement.scrollHeight;
 
-      // 스크롤이 가장 하단으로 이동했을 때
-      if (scrollPosition + window.innerHeight >= documentHeight) {
-        // API 호출 함수 호출
-        fetchBooks(!keyword && "주식", 1, 40);
+      //* 브라우저 창의 높이
+      const windowHeight = window.innerHeight;
+
+      //* 스크롤 위치가 (문서 높이 - 창 높이) 와 거의 같을 때, 즉 하단에 도달했을 때
+      if (scrollPosition >= documentHeight - windowHeight) {
+        console.log("스크롤이 가장 하단에 도달했습니다!");
+        //* 여기에 원하는 작업을 추가할 수 있습니다.
+        setDisplay((prevTotal) => prevTotal + 20);
+        fetchBooks(!keyword && "주식", 1, display);
       }
-    });
+    };
+
+    //* 스크롤 이벤트 핸들러 등록
+    window.addEventListener("scroll", handleScroll);
+
     fetchBooks("주식");
     document.title = "NAVER 책";
-  }, [keyword]);
+
+    //* 컴포넌트가 언마운트되면 이벤트 핸들러 제거
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // 빈 배열은 컴포넌트가 마운트될 때 한 번만 실행되도록 합니다.
+
+  // useEffect(() => {
+  //   // 스크롤 이벤트 리스너 등록
+  //   window.addEventListener("scroll", function () {
+  //     // 현재 스크롤 위치
+  //     var scrollPosition =
+  //       window.scrollY ||
+  //       window.pageYOffset ||
+  //       document.documentElement.scrollTop;
+
+  //     // 전체 문서의 높이
+  //     var documentHeight = Math.max(
+  //       document.body.scrollHeight,
+  //       document.body.offsetHeight,
+  //       document.documentElement.clientHeight,
+  //       document.documentElement.scrollHeight,
+  //       document.documentElement.offsetHeight
+  //     );
+
+  //     // 스크롤이 가장 하단으로 이동했을 때
+  //     if (scrollPosition + window.innerHeight >= documentHeight) {
+  //       console.log("?");
+  //       // API 호출 함수 호출
+  //       fetchBooks(!keyword && "주식", 1, 40);
+  //     }
+  //   });
+  //   fetchBooks("주식");
+  //   document.title = "NAVER 책";
+  // }, []);
 
   return (
     <div className="App">
+      <div style={{ position: "fixed" }}>{display}</div>
       <form onSubmit={handleSubmit} className="search_wrap">
         <div className="emoji">📗</div>
         <input
