@@ -85,6 +85,7 @@ function App() {
   //* 초기화
   useEffect(() => {
     fetchBooks("주식", INIT_BOOK_NUMBER);
+    document.title = "네이버 Developers: 검색 > 책";
   }, []);
 
   return (
