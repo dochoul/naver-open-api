@@ -90,7 +90,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <div style={{ position: "fixed" }}>{test}</div> */}
+      <div className="title">네이버 도서 검색</div>
       <form onSubmit={handleSubmit} className="search_wrap">
         <div className="emoji">📗</div>
         <input

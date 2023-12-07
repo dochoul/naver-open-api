@@ -1,11 +1,18 @@
 .App {
+  .title {
+    font-size: 3em;
+    font-weight: 900;
+    text-align: center;
+    margin: 2% auto;
+    color: #03c75a;
+  }
   .search_wrap {
     position: relative;
     display: flex;
     gap: 10px;
     align-items: center;
     justify-content: center;
-    margin: 10% auto 5%;
+    margin: 0 auto 2%;
     width: 95%;
     .emoji {
       display: none;
@@ -90,8 +97,10 @@
 
 @media only screen and (min-width: 768px) {
   .App {
+    .title {
+      font-size: 3em;
+    }
     .search_wrap {
-      margin: 6% auto 3%;
       .emoji {
         display: block;
         font-size: 22px;
@@ -106,8 +115,10 @@
 
 @media only screen and (min-width: 1024px) {
   .App {
+    .title {
+      font-size: 6em;
+    }
     .search_wrap {
-      margin: 4% auto 2%;
       width: 50%;
       .emoji {
         font-size: 30px;
