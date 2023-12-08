@@ -1,11 +1,4 @@
 .App {
-  .title {
-    font-size: 3em;
-    font-weight: 900;
-    text-align: center;
-    margin: 2% auto;
-    color: #03c75a;
-  }
   .search_wrap {
     position: relative;
     display: flex;
@@ -38,96 +31,15 @@
       }
     }
   }
-  .container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
-    width: 95%;
-    margin: 0 auto 3%;
-    .box {
-      padding: 30px;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
-      transition: all 0.2s ease-in-out;
-      .link {
-        text-decoration: none;
-        .thumbnail {
-          display: block;
-          margin: 20px auto;
-          max-width: 148px;
-          max-height: 236px;
-          object-fit: cover;
-        }
-        .book-title {
-          font-size: 20px;
-          margin-bottom: 5px;
-          line-height: 1.2;
-          font-weight: 900;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-        }
-        .book-info {
-          font-size: 14px;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          span {
-            color: #888;
-          }
-          .description {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3;
-          }
-        }
-      }
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 4px 12px 20px 6px rgba(0, 0, 0, 0.18);
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: 768px) {
-  .App {
-    .title {
-      font-size: 3em;
-    }
-    .search_wrap {
-      .emoji {
-        display: block;
-        font-size: 22px;
-      }
-    }
-    .container {
-      gap: 15px;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
 }
 
 @media only screen and (min-width: 1024px) {
   .App {
-    .title {
-      font-size: 6em;
-    }
     .search_wrap {
       width: 50%;
-      .emoji {
-        font-size: 30px;
-      }
-    }
-    .container {
-      width: 90%;
-      gap: 20px;
-      grid-template-columns: repeat(5, 1fr);
     }
   }
 }
