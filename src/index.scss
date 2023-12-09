@@ -1,36 +1,4 @@
 .App {
-  .search_wrap {
-    position: relative;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 2%;
-    width: 95%;
-    .emoji {
-      display: none;
-      line-height: 1;
-    }
-    input {
-      width: 100%;
-      padding: 10px 15px;
-      border: 1px solid #00c772;
-      border-radius: 6px;
-      height: 30px;
-      font-size: 20px;
-      transition: border-color 0.15s ease-in;
-    }
-    .search_button {
-      position: absolute;
-      right: 5px;
-      top: 2px;
-      cursor: pointer;
-      img {
-        width: 45px;
-        height: 45px;
-      }
-    }
-  }
 }
 
 @media only screen and (min-width: 768px) {
