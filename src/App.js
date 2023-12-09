@@ -48,6 +48,7 @@ function App() {
   useEffect(() => {
     $_getBooks();
     document.title = "네이버 Developers: 검색 > 책";
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
